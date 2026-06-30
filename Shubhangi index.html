@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubhangi Aryan — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --ink:#1E2235;
+    --navy:#22284A;
+    --gold:#C08A2E;
+    --line:#D8D2C2;
+    --muted:#6B6A5F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,243,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    height:64px;
+  }
+  nav .brand{font-family:'Fraunces',serif;font-size:1.05rem;}
+  nav a{
+    color:var(--ink);text-decoration:none;
+    font-size:0.85rem;margin-left:24px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  nav a:hover{color:var(--gold);}
+  .navlinks{display:flex;align-items:center;}
+  @media (max-width:640px){ .navlinks a{margin-left:14px;font-size:0.75rem;} }
+
+  /* HERO */
+  header.hero{
+    padding:90px 0 70px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  header.hero h1{
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    line-height:1.08;
+    max-width:780px;
+  }
+  header.hero p.lede{
+    margin-top:22px;
+    max-width:560px;
+    font-size:1.08rem;
+    color:var(--muted);
+  }
+  .hero-flow{
+    margin-top:48px;
+    display:flex;
+    align-items:center;
+    gap:0;
+    flex-wrap:wrap;
+  }
+  .flow-step{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.74rem;
+    color:var(--navy);
+    border:1px solid var(--line);
+    background:#fff;
+    padding:8px 14px;
+    border-radius:3px;
+  }
+  .flow-arrow{
+    color:var(--gold);
+    margin:0 8px;
+    font-size:0.9rem;
+  }
+  .cta-row{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:11px 22px;
+    border:1px solid var(--navy);
+    color:var(--navy);
+    text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    border-radius:2px;
+    transition:all .15s ease;
+  }
+  .btn.primary{background:var(--navy);color:var(--paper);}
+  .btn:hover{background:var(--gold);border-color:var(--gold);color:#fff;}
+
+  section{padding:70px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:10px;
+  }
+  section h2{font-size:1.9rem;margin-bottom:30px;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  @media (max-width:700px){.about-grid{grid-template-columns:1fr;}}
+  .principles{margin-top:20px;}
+  .principle{
+    border-left:2px solid var(--gold);
+    padding-left:16px;
+    margin-bottom:18px;
+  }
+  .principle .ptitle{font-weight:600;font-size:0.95rem;}
+  .principle .pdesc{color:var(--muted);font-size:0.92rem;margin-top:3px;}
+
+  /* CASE STUDIES */
+  .case{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:4px;
+    margin-bottom:24px;
+    overflow:hidden;
+  }
+  .case-head{
+    padding:22px 26px;
+    display:flex;justify-content:space-between;align-items:center;
+    cursor:pointer;
+  }
+  .case-head h3{font-size:1.2rem;}
+  .case-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .case-toggle{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--gold);
+    font-size:1.2rem;
+    transition:transform .2s ease;
+  }
+  .case.open .case-toggle{transform:rotate(45deg);}
+  .case-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    padding:0 26px;
+  }
+  .case.open .case-body{max-height:900px;padding-bottom:26px;}
+  .case-body h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--gold);
+    margin-top:18px;
+    margin-bottom:8px;
+  }
+  .case-body p, .case-body li{font-size:0.95rem;color:var(--ink);}
+  .case-body ul{padding-left:20px;margin-top:6px;}
+  .case-body li{margin-bottom:5px;}
+
+  /* MEDIA */
+  .media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:700px){.media-grid{grid-template-columns:1fr;}}
+  .media-card{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:22px;
+    border-radius:4px;
+  }
+  .media-card .mtitle{font-weight:600;margin-bottom:6px;}
+  .media-card .mstat{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--gold);
+    font-size:0.85rem;
+  }
+  .media-card a{color:var(--navy);font-size:0.85rem;}
+
+  /* CONTACT */
+  footer.contact{
+    padding:80px 0;
+    text-align:left;
+  }
+  footer.contact h2{font-size:2.2rem;margin-bottom:14px;}
+  footer.contact p{color:var(--muted);max-width:480px;margin-bottom:30px;}
+  .contact-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .foot-note{
+    margin-top:60px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Shubhangi Aryan</div>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#media">Media</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Product Manager — Hero FinCorp</div>
+    <h1>I take products from zero to scale — and the numbers come with me.</h1>
+    <p class="lede">I own 0→1 product launches across B2B merchant platforms, GenAI collections infrastructure, and B2C UPI/engagement — for a partner and customer base in the tens of millions. IIM Kozhikode MBA. Engineer before that.</p>
+    <div class="hero-flow">
+      <span class="flow-step">0→1 LAUNCH</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">90% ADOPTION</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">81% COST CUT</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">1.8X REVENUE</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn primary" href="#work">View case studies</a>
+      <a class="btn" href="/resume.pdf" target="_blank">Download resume</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">About</div>
+    <h2>From circuit boards to credit decisions</h2>
+    <div class="about-grid">
+      <div>
+        <p>I started as an EVM Engineer at Bharat Electronics Ltd, standardizing workflows across five critical manufacturing operations and cutting defect rates by 33% across 2.2 lakh+ EVMs. I was honored by the Government of Punjab for delivering zero-defect execution during Assembly Elections '22 — work where there was no margin for "close enough."</p>
+        <p style="margin-top:14px;">An MBA at IIM Kozhikode redirected that discipline toward products and markets — including scaling a content platform to 900K+ views and ₹2L+ in revenue from scratch. Today at Hero FinCorp, I own 0→1 product builds across B2B, B2C, and AI-driven collections, in an NBFC environment where every feature has to survive both a growth target and a compliance review.</p>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:0;">How I operate</div>
+        <div class="principles">
+          <div class="principle">
+            <div class="ptitle">Ship 0→1, then scale relentlessly</div>
+            <div class="pdesc">Most of my biggest wins started as builds with no existing playbook — the Merchant App, the agentic voice infrastructure, the bounce predictor.</div>
+          </div>
+          <div class="principle">
+            <div class="ptitle">First-principles PRDs, not assumption-led ones</div>
+            <div class="pdesc">User research and journey mapping come before the PRD, not after — that's how a 30% churn reduction gets found.</div>
+          </div>
+          <div class="principle">
+            <div class="ptitle">Every feature ships with a metric attached</div>
+            <div class="pdesc">Adoption, MAU, TAT, cost — if a feature can't be measured, I haven't finished defining it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-label">Selected Work</div>
+    <h2>Case studies</h2>
+
+    <div class="case open">
+      <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+        <div>
+          <h3>Bridge App — B2B Merchant Platform</h3>
+          <div class="case-tag">0→1 · 10K+ PARTNERS · 6 LOBs</div>
+        </div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <h4>The Problem</h4>
+        <p>10,000+ distribution partners across six lines of business had no single platform to originate and service loans digitally — operations leaned heavily on offline and manual workflows, with no consistent way to track adoption or churn.</p>
+        <h4>My Role</h4>
+        <p>End-to-end product owner — roadmap, PRDs, and shipping — for the 0-to-1 launch of the Merchant App.</p>
+        <h4>Key Decisions</h4>
+        <ul>
+          <li>Shipped 15+ features across all six LOBs against a single roadmap, rather than letting each LOB fragment into its own build</li>
+          <li>Built a GenAI document-extraction tool against Vahan APIs to automate RC validation, cutting manual review time</li>
+          <li>Ran user research and journey mapping with partners to diagnose churn drivers, translating findings into first-principles PRDs</li>
+          <li>Designed a Rewards & Loyalty program with personalized offers to drive retention, not just acquisition</li>
+        </ul>
+        <h4>Outcome</h4>
+        <p>80% digital penetration across the partner base, 90% adoption and 70% MAU on the app, a 60% reduction in document-processing TAT (with 20% fewer errors), 30% lower partner churn, dealer revenue up 1.8X YoY, and DAU up 4X.</p>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+        <div>
+          <h3>AI-Powered Collections — Agentic Voice &amp; Bounce Prediction</h3>
+          <div class="case-tag">0→1 · GENAI · RISK MODELING</div>
+        </div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <h4>The Problem</h4>
+        <p>Collections relied on manual tele-calling at scale, with no early signal on which accounts were likely to bounce — agents were reacting after the fact rather than prioritizing before risk materialized.</p>
+        <h4>My Role</h4>
+        <p>End-to-end product owner for the AI-reimagined collections initiative, from voice automation to risk modeling.</p>
+        <h4>Key Decisions</h4>
+        <ul>
+          <li>Delivered a 0→1 agentic AI voice infrastructure to automate tele-calling operations at scale</li>
+          <li>Built an EMI-bounce predictor using 360° customer profiling to forecast risk 15 days in advance</li>
+          <li>Engineered smart contact sequencing across omni-channel workflows to improve targeting precision</li>
+        </ul>
+        <h4>Outcome</h4>
+        <p>₹2.34 Cr in annual cost savings (an 81% reduction) on tele-calling, ~20% of collection risk mitigated through early bounce prediction, and 40% better targeting with 99.99% reach accuracy.</p>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+        <div>
+          <h3>B2C Customer App — UPI &amp; Engagement</h3>
+          <div class="case-tag">GTM · GROWTH · 10L+ USERS</div>
+        </div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <h4>The Problem</h4>
+        <p>UPI was a new surface on the B2C app with no established adoption pattern, and organic growth on the broader app was flat without a clear engagement or referral strategy.</p>
+        <h4>My Role</h4>
+        <p>Product owner for UPI launch and the engagement/referral charter, including GTM strategy and metric design.</p>
+        <h4>Key Decisions</h4>
+        <ul>
+          <li>Driving an IPL-linked UPI GTM campaign via Delhi Capitals sponsorship to accelerate adoption toward 1Mn+ transactions</li>
+          <li>Defined success metrics and ran structured A/B testing for the Engagement Charter, iterating on cohort-level data</li>
+          <li>Designed a referral program for a 10L+ user base to convert existing users into an acquisition channel</li>
+        </ul>
+        <h4>Outcome</h4>
+        <p>UPI scaled to ₹10M daily GMV and 10K daily transactions within the first month at &gt;95% success rate; organic installs up 30%; referral program drove ₹1.5 Cr monthly organic growth, contributing to a 33% revenue increase.</p>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head" onclick="this.parentElement.classList.toggle('open')">
+        <div>
+          <h3>Strategy Internship — Omnichannel Servicing</h3>
+          <div class="case-tag">INTERNSHIP · SERVICING · FUNNEL OPTIMIZATION</div>
+        </div>
+        <div class="case-toggle">+</div>
+      </div>
+      <div class="case-body">
+        <h4>The Problem</h4>
+        <p>Customer servicing leaned heavily on staffed channels with no vernacular support, and 50+ touchpoints across the journey hadn't been audited for friction or abandonment.</p>
+        <h4>My Role</h4>
+        <p>Strategy intern designing an omnichannel servicing interface and auditing the end-to-end customer journey.</p>
+        <h4>Key Decisions</h4>
+        <ul>
+          <li>Designed automation into the servicing interface to reduce dependency on staffed support</li>
+          <li>Launched vernacular servicing to remove a language-driven funnel bottleneck</li>
+          <li>Audited and optimized 50+ customer journey touchpoints for friction</li>
+        </ul>
+        <h4>Outcome</h4>
+        <p>₹0.36M+ in savings with 40% lower staffing cost, 20% higher acquisition and 10% higher retention, 20% improvement in customer satisfaction, and 25% lower call abandonment.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="media">
+  <div class="wrap">
+    <div class="section-label">Beyond Product</div>
+    <h2>Content &amp; media</h2>
+    <div class="media-grid">
+      <div class="media-card">
+        <div class="mtitle">YouTube</div>
+        <div class="mstat">900K+ views · ₹2L+ revenue</div>
+        <p style="margin:10px 0;color:var(--muted);font-size:0.9rem;">Scaled from 0 through audience research, SEO, and growth experimentation — and monetized via brand partnerships.</p>
+        <a href="#">View channel →</a>
+      </div>
+      <div class="media-card">
+        <div class="mtitle">Podcast</div>
+        <p style="margin:10px 0;color:var(--muted);font-size:0.9rem;">Conversational, interview-format work.</p>
+        <a href="#">Listen →</a>
+      </div>
+      <div class="media-card">
+        <div class="mtitle">FM Radio</div>
+        <p style="margin:10px 0;color:var(--muted);font-size:0.9rem;">On-air hosting experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-label">Get in touch</div>
+    <h2>Let's talk product.</h2>
+    <p>Open to conversations on fintech, digital lending, and AI-driven product roles in BFSI and beyond.</p>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:shubhangiaryan1@gmail.com">Email me</a>
+      <a class="btn" href="https://linkedin.com/in/shubhangiaryan" target="_blank">LinkedIn</a>
+    </div>
+    <div class="foot-note">© 2026 Shubhangi Aryan · Gurugram, India</div>
+  </div>
+</footer>
+
+</body>
+</html>
